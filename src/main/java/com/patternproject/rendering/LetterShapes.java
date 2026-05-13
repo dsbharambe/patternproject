@@ -42,6 +42,34 @@ public final class LetterShapes {
     private LetterShapes() {
     }
 
+    /** Prints a name (word) drawn with stars, letters side-by-side separated by a blank column. */
+    public static void printNameInStarPattern(PrintStream out, String name) {
+        if (name == null || name.trim().isEmpty()) {
+            out.println("Please enter a name.");
+            return;
+        }
+        String upper = name.trim().toUpperCase(Locale.ROOT);
+        int glyphRows = STAR_LETTER_GLYPHS[0].length;
+        for (int row = 0; row < glyphRows; row++) {
+            StringBuilder line = new StringBuilder();
+            for (int ci = 0; ci < upper.length(); ci++) {
+                char ch = upper.charAt(ci);
+                if (ch == ' ') {
+                    if (line.length() > 0) line.append("   ");
+                    continue;
+                }
+                if (ch < 'A' || ch > 'Z') continue;
+                if (line.length() > 0) line.append(" ");
+                String rowBits = STAR_LETTER_GLYPHS[ch - 'A'][row];
+                for (int i = 0; i < rowBits.length(); i++) {
+                    if (i > 0) line.append(' ');
+                    line.append(rowBits.charAt(i) == '1' ? '*' : ' ');
+                }
+            }
+            out.println(line);
+        }
+    }
+
     /** Prints one uppercase letter (A-Z) drawn with stars using a fixed 5x7 glyph. */
     public static void printLetterInStarPattern(PrintStream out, String input) {
         if (input == null || input.trim().isEmpty()) {

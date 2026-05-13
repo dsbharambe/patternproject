@@ -113,6 +113,7 @@ The class `StarPatternDemo` still exposes a `main` method and delegates to `Patt
 | Hourglass | `alphabet hourglass`, `letter hourglass`, `alphabet sandglass` |
 | Butterfly | `alphabet butterfly`, `letter butterfly` |
 | Single letter in stars | `letter in stars`, `letter star pattern`, `alphabet star letter` |
+| Name in stars | `name in stars`, `name star pattern`, `name pattern` |
 
 ## Architecture
 

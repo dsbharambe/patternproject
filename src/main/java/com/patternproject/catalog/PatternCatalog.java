@@ -587,6 +587,21 @@ public final class PatternCatalog {
                         "letter star pattern",
                         "alphabet star letter")));
 
+        defs.add(new PatternDefinition(
+                "name_in_stars",
+                PatternKind.ALPHABET,
+                "  name in stars           — enter a name to print it with * glyphs",
+                (n, in, out, err) -> {
+                    out.print("Enter a name: ");
+                    String nameInput = in.nextLine();
+                    LetterShapes.printNameInStarPattern(out, nameInput);
+                    return true;
+                },
+                Arrays.asList(
+                        "name in stars",
+                        "name star pattern",
+                        "name pattern")));
+
         Map<String, PatternDefinition> index = new HashMap<>();
         for (PatternDefinition def : defs) {
             for (String alias : def.aliases()) {

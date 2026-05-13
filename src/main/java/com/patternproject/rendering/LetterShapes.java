@@ -1,6 +1,7 @@
 package com.patternproject.rendering;
 
 import java.io.PrintStream;
+import java.util.Locale;
 
 /**
  * Alphabet (A–Z) patterns. Row width is capped at 26 letters from {@code A}; larger {@code n} only adds
@@ -9,8 +10,62 @@ import java.io.PrintStream;
 public final class LetterShapes {
 
     private static final int SPAN = 26;
+    private static final String[][] STAR_LETTER_GLYPHS = {
+            {"01110", "10001", "10001", "11111", "10001", "10001", "10001"}, // A
+            {"11110", "10001", "10001", "11110", "10001", "10001", "11110"}, // B
+            {"01110", "10001", "10000", "10000", "10000", "10001", "01110"}, // C
+            {"11110", "10001", "10001", "10001", "10001", "10001", "11110"}, // D
+            {"11111", "10000", "10000", "11110", "10000", "10000", "11111"}, // E
+            {"11111", "10000", "10000", "11110", "10000", "10000", "10000"}, // F
+            {"01110", "10001", "10000", "10000", "10011", "10001", "01110"}, // G
+            {"10001", "10001", "10001", "11111", "10001", "10001", "10001"}, // H
+            {"11111", "00100", "00100", "00100", "00100", "00100", "11111"}, // I
+            {"00001", "00001", "00001", "00001", "10001", "10001", "01110"}, // J
+            {"10001", "10010", "10100", "11000", "10100", "10010", "10001"}, // K
+            {"10000", "10000", "10000", "10000", "10000", "10000", "11111"}, // L
+            {"10001", "11011", "10101", "10101", "10001", "10001", "10001"}, // M
+            {"10001", "11001", "10101", "10011", "10001", "10001", "10001"}, // N
+            {"01110", "10001", "10001", "10001", "10001", "10001", "01110"}, // O
+            {"11110", "10001", "10001", "11110", "10000", "10000", "10000"}, // P
+            {"01110", "10001", "10001", "10001", "10101", "10010", "01101"}, // Q
+            {"11110", "10001", "10001", "11110", "10100", "10010", "10001"}, // R
+            {"01111", "10000", "10000", "01110", "00001", "00001", "11110"}, // S
+            {"11111", "00100", "00100", "00100", "00100", "00100", "00100"}, // T
+            {"10001", "10001", "10001", "10001", "10001", "10001", "01110"}, // U
+            {"10001", "10001", "10001", "10001", "10001", "01010", "00100"}, // V
+            {"10001", "10001", "10001", "10101", "10101", "10101", "01010"}, // W
+            {"10001", "10001", "01010", "00100", "01010", "10001", "10001"}, // X
+            {"10001", "10001", "01010", "00100", "00100", "00100", "00100"}, // Y
+            {"11111", "00001", "00010", "00100", "01000", "10000", "11111"}  // Z
+    };
 
     private LetterShapes() {
+    }
+
+    /** Prints one uppercase letter (A-Z) drawn with stars using a fixed 5x7 glyph. */
+    public static void printLetterInStarPattern(PrintStream out, String input) {
+        if (input == null || input.trim().isEmpty()) {
+            out.println("Please enter a letter from A to Z.");
+            return;
+        }
+        char letter = input.trim().toUpperCase(Locale.ROOT).charAt(0);
+        if (letter < 'A' || letter > 'Z') {
+            out.println("Only A-Z letters are supported.");
+            return;
+        }
+
+        out.println("Star pattern for letter " + letter + ":");
+        String[] glyph = STAR_LETTER_GLYPHS[letter - 'A'];
+        for (String row : glyph) {
+            StringBuilder line = new StringBuilder();
+            for (int i = 0; i < row.length(); i++) {
+                line.append(row.charAt(i) == '1' ? '*' : ' ');
+                if (i < row.length() - 1) {
+                    line.append(' ');
+                }
+            }
+            out.println(line);
+        }
     }
 
     /** Row {@code i}: {@code A} through the {@code i}-th letter (wraps after Z if {@code i} &gt; 26). */

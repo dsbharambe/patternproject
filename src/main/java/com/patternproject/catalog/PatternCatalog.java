@@ -572,6 +572,21 @@ public final class PatternCatalog {
                         "alphabet butterfly",
                         "letter butterfly")));
 
+        defs.add(new PatternDefinition(
+                "letter_star_shape",
+                PatternKind.ALPHABET,
+                "  letter in stars         — enter A-Z to print that letter with *",
+                (n, in, out, err) -> {
+                    out.print("Enter a letter (A-Z): ");
+                    String letterInput = in.nextLine();
+                    LetterShapes.printLetterInStarPattern(out, letterInput);
+                    return true;
+                },
+                Arrays.asList(
+                        "letter in stars",
+                        "letter star pattern",
+                        "alphabet star letter")));
+
         Map<String, PatternDefinition> index = new HashMap<>();
         for (PatternDefinition def : defs) {
             for (String alias : def.aliases()) {

@@ -1,5 +1,6 @@
 package com.patternproject.catalog;
 
+import com.patternproject.rendering.NumberShapes;
 import com.patternproject.rendering.StarShapes;
 import com.patternproject.util.Normalization;
 
@@ -29,6 +30,7 @@ public final class PatternCatalog {
 
         defs.add(new PatternDefinition(
                 "square",
+                "Star (*) shapes:",
                 "  square              — filled n×n square",
                 (n, in, out, err) -> {
                     StarShapes.square(out, n);
@@ -219,6 +221,196 @@ public final class PatternCatalog {
                     return true;
                 },
                 Arrays.asList("border cross", "cross")));
+
+        defs.add(new PatternDefinition(
+                "simple_number_triangle",
+                "Number patterns:",
+                "  simple number triangle   — rows 1, 12…, …, 1…n",
+                (n, in, out, err) -> {
+                    NumberShapes.simpleNumberTriangle(out, n);
+                    return true;
+                },
+                Arrays.asList(
+                        "simple number triangle",
+                        "number triangle simple")));
+
+        defs.add(new PatternDefinition(
+                "repeated_number_triangle",
+                "  repeated number triangle — row i is i repeated i times",
+                (n, in, out, err) -> {
+                    NumberShapes.repeatedNumberTriangle(out, n);
+                    return true;
+                },
+                Arrays.asList("repeated number triangle")));
+
+        defs.add(new PatternDefinition(
+                "reverse_number_triangle",
+                "  reverse number triangle — row i : i … 1",
+                (n, in, out, err) -> {
+                    NumberShapes.reverseNumberTriangle(out, n);
+                    return true;
+                },
+                Arrays.asList("reverse number triangle")));
+
+        defs.add(new PatternDefinition(
+                "floyds_triangle",
+                "  floyd triangle         — Floyd’s consecutive fill",
+                (n, in, out, err) -> {
+                    NumberShapes.floydsTriangle(out, n);
+                    return true;
+                },
+                Arrays.asList("floyd triangle", "floyd", "floyd's triangle")));
+
+        defs.add(new PatternDefinition(
+                "zero_one_triangle",
+                "  0-1 triangle           — alternating 0/1 per cell",
+                (n, in, out, err) -> {
+                    NumberShapes.zeroOneTriangle(out, n);
+                    return true;
+                },
+                Arrays.asList(
+                        "0-1 triangle",
+                        "zero one triangle",
+                        "binary triangle")));
+
+        defs.add(new PatternDefinition(
+                "number_pyramid",
+                "  number pyramid         — centered 1…i rows",
+                (n, in, out, err) -> {
+                    NumberShapes.numberPyramid(out, n);
+                    return true;
+                },
+                Arrays.asList("number pyramid")));
+
+        defs.add(new PatternDefinition(
+                "palindrome_number_pyramid",
+                "  palindrome number pyramid — 1 2 … i … 2 1",
+                (n, in, out, err) -> {
+                    NumberShapes.palindromeNumberPyramid(out, n);
+                    return true;
+                },
+                Arrays.asList("palindrome pyramid", "palindrome number pyramid")));
+
+        defs.add(new PatternDefinition(
+                "diamond_number",
+                "  diamond number          — numeric palindrome diamond",
+                (n, in, out, err) -> {
+                    NumberShapes.diamondNumberPattern(out, n);
+                    return true;
+                },
+                Arrays.asList("diamond number", "diamond number pattern")));
+
+        defs.add(new PatternDefinition(
+                "sequential_number_square",
+                "  sequential number square — n×n grid 1…n²",
+                (n, in, out, err) -> {
+                    NumberShapes.sequentialNumberSquare(out, n);
+                    return true;
+                },
+                Arrays.asList("sequential number square", "sequential square")));
+
+        defs.add(new PatternDefinition(
+                "reverse_sequential_triangle",
+                "  reverse sequential triangle — n…1 then … packed rows",
+                (n, in, out, err) -> {
+                    NumberShapes.reverseSequentialTriangle(out, n);
+                    return true;
+                },
+                Arrays.asList("reverse sequential triangle")));
+
+        defs.add(new PatternDefinition(
+                "pascal_triangle",
+                "  pascal triangle        — binomial coefficients",
+                (n, in, out, err) -> {
+                    NumberShapes.pascalTriangle(out, n);
+                    return true;
+                },
+                Arrays.asList("pascal triangle", "triangle pascal", "numbered pascal")));
+
+        defs.add(new PatternDefinition(
+                "right_pascal",
+                "  right pascal           — Pascal rows right-aligned",
+                (n, in, out, err) -> {
+                    NumberShapes.rightPascalPattern(out, n);
+                    return true;
+                },
+                Arrays.asList(
+                        "right pascal pattern",
+                        "right pascal")));
+
+        defs.add(new PatternDefinition(
+                "alternating_binary_pattern",
+                "  alternating binary pattern — n×n 0/1 checker",
+                (n, in, out, err) -> {
+                    NumberShapes.alternatingBinaryPattern(out, n);
+                    return true;
+                },
+                Arrays.asList("alternating binary pattern")));
+
+        defs.add(new PatternDefinition(
+                "descending_number_pyramid",
+                "  descending number pyramid — upside-down widening rows",
+                (n, in, out, err) -> {
+                    NumberShapes.descendingNumberPyramid(out, n);
+                    return true;
+                },
+                Arrays.asList("descending pyramid", "descending number pyramid")));
+
+        defs.add(new PatternDefinition(
+                "hollow_number_square",
+                "  hollow number square   — border 1, interior 0",
+                (n, in, out, err) -> {
+                    NumberShapes.hollowNumberSquare(out, n);
+                    return true;
+                },
+                Arrays.asList("hollow number square")));
+
+        defs.add(new PatternDefinition(
+                "number_hourglass",
+                "  number hourglass     — widen then narrow, consecutive ints",
+                (n, in, out, err) -> {
+                    NumberShapes.numberHourglass(out, n);
+                    return true;
+                },
+                Arrays.asList("number hourglass", "number sandglass")));
+
+        defs.add(new PatternDefinition(
+                "multiplication_table",
+                "  multiplication table — i×j for 1…n",
+                (n, in, out, err) -> {
+                    NumberShapes.multiplicationTablePattern(out, n);
+                    return true;
+                },
+                Arrays.asList("multiplication table pattern", "multiplication table")));
+
+        defs.add(new PatternDefinition(
+                "snake_number_pattern",
+                "  snake number pattern — row-major zig-zag rows",
+                (n, in, out, err) -> {
+                    NumberShapes.snakeNumberPattern(out, n);
+                    return true;
+                },
+                Arrays.asList("snake number pattern", "snake pattern")));
+
+        defs.add(new PatternDefinition(
+                "centered_increasing_numbers",
+                "  centered increasing numbers — centered 1…i rows",
+                (n, in, out, err) -> {
+                    NumberShapes.centeredIncreasingNumbers(out, n);
+                    return true;
+                },
+                Arrays.asList("centered increasing numbers", "centered increasing")));
+
+        defs.add(new PatternDefinition(
+                "hollow_pyramid_numbers",
+                "  hollow pyramid numbers — outline only",
+                (n, in, out, err) -> {
+                    NumberShapes.hollowPyramidNumbers(out, n);
+                    return true;
+                },
+                Arrays.asList(
+                        "hollow pyramid numbers",
+                        "hollow number pyramid")));
 
         Map<String, PatternDefinition> index = new HashMap<>();
         for (PatternDefinition def : defs) {

@@ -64,8 +64,12 @@ public final class PatternConsoleApp {
     }
 
     private void printHelp() {
-        out.println("Star patterns (names are case-insensitive):");
+        out.println("Patterns (names are case-insensitive).\n");
         for (PatternDefinition def : catalog.definitionsInDisplayOrder()) {
+            if (def.sectionTitle() != null) {
+                out.println();
+                out.println(def.sectionTitle());
+            }
             out.println(def.helpLine());
         }
         out.println();

@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * One logical pattern: kind (star vs number), help text, how to draw it, and user-facing aliases.
+ * One logical pattern: kind (star, number, or alphabet), help text, behavior, and aliases.
  */
 public final class PatternDefinition {
 

@@ -1,5 +1,6 @@
 package com.patternproject.catalog;
 
+import com.patternproject.rendering.LetterShapes;
 import com.patternproject.rendering.NumberShapes;
 import com.patternproject.rendering.StarShapes;
 import com.patternproject.util.Normalization;
@@ -431,6 +432,145 @@ public final class PatternCatalog {
                 Arrays.asList(
                         "hollow pyramid numbers",
                         "hollow number pyramid")));
+
+        defs.add(new PatternDefinition(
+                "simple_alphabet_triangle",
+                "Alphabet patterns:",
+                PatternKind.ALPHABET,
+                "  simple alphabet triangle  — rows A, A B, … through row n",
+                (n, in, out, err) -> {
+                    LetterShapes.simpleLetterTriangle(out, n);
+                    return true;
+                },
+                Arrays.asList(
+                        "simple alphabet triangle",
+                        "alphabet triangle simple")));
+
+        defs.add(new PatternDefinition(
+                "repeated_alphabet_triangle",
+                PatternKind.ALPHABET,
+                "  repeated alphabet triangle — row i is letter i repeated i times",
+                (n, in, out, err) -> {
+                    LetterShapes.repeatedLetterTriangle(out, n);
+                    return true;
+                },
+                Arrays.asList("repeated alphabet triangle")));
+
+        defs.add(new PatternDefinition(
+                "reverse_alphabet_triangle",
+                PatternKind.ALPHABET,
+                "  reverse alphabet triangle — row i : … C B A down to A",
+                (n, in, out, err) -> {
+                    LetterShapes.reverseLetterTriangle(out, n);
+                    return true;
+                },
+                Arrays.asList("reverse alphabet triangle")));
+
+        defs.add(new PatternDefinition(
+                "left_alphabet_triangle",
+                PatternKind.ALPHABET,
+                "  left alphabet triangle    — right-aligned A… block (increased rows)",
+                (n, in, out, err) -> {
+                    LetterShapes.leftLetterTriangle(out, n);
+                    return true;
+                },
+                Arrays.asList(
+                        "left alphabet triangle",
+                        "letter triangle left")));
+
+        defs.add(new PatternDefinition(
+                "alphabet_pyramid",
+                PatternKind.ALPHABET,
+                "  alphabet pyramid          — centered A… per row",
+                (n, in, out, err) -> {
+                    LetterShapes.letterPyramid(out, n);
+                    return true;
+                },
+                Arrays.asList("alphabet pyramid", "letter pyramid")));
+
+        defs.add(new PatternDefinition(
+                "palindrome_alphabet_pyramid",
+                PatternKind.ALPHABET,
+                "  palindrome alphabet pyramid — A, A B A, A B C B A …",
+                (n, in, out, err) -> {
+                    LetterShapes.palindromeLetterPyramid(out, n);
+                    return true;
+                },
+                Arrays.asList(
+                        "palindrome alphabet pyramid",
+                        "palindrome letter pyramid")));
+
+        defs.add(new PatternDefinition(
+                "diamond_alphabet",
+                PatternKind.ALPHABET,
+                "  diamond alphabet          — palindrome diamond",
+                (n, in, out, err) -> {
+                    LetterShapes.letterDiamond(out, n);
+                    return true;
+                },
+                Arrays.asList("diamond alphabet", "diamond alphabet pattern")));
+
+        defs.add(new PatternDefinition(
+                "descending_alphabet_pyramid",
+                PatternKind.ALPHABET,
+                "  descending alphabet pyramid — inverted centered letter runs",
+                (n, in, out, err) -> {
+                    LetterShapes.descendingLetterPyramid(out, n);
+                    return true;
+                },
+                Arrays.asList(
+                        "descending alphabet pyramid",
+                        "descending letter pyramid")));
+
+        defs.add(new PatternDefinition(
+                "hollow_alphabet_pyramid",
+                PatternKind.ALPHABET,
+                "  hollow alphabet pyramid   — outline A and row letter, full base",
+                (n, in, out, err) -> {
+                    LetterShapes.hollowLetterPyramid(out, n);
+                    return true;
+                },
+                Arrays.asList(
+                        "hollow alphabet pyramid",
+                        "hollow letter pyramid")));
+
+        defs.add(new PatternDefinition(
+                "sequential_letter_square",
+                PatternKind.ALPHABET,
+                "  sequential letter square — n×n A B C … row-major",
+                (n, in, out, err) -> {
+                    LetterShapes.sequentialLetterSquare(out, n);
+                    return true;
+                },
+                Arrays.asList(
+                        "sequential letter square",
+                        "sequential alphabet square",
+                        "alphabet square")));
+
+        defs.add(new PatternDefinition(
+                "letter_hourglass",
+                PatternKind.ALPHABET,
+                "  alphabet hourglass      — narrow then wide, consecutive letters",
+                (n, in, out, err) -> {
+                    LetterShapes.letterHourglass(out, n);
+                    return true;
+                },
+                Arrays.asList(
+                        "alphabet hourglass",
+                        "letter hourglass",
+                        "alphabet sandglass")));
+
+        defs.add(new PatternDefinition(
+                "letter_butterfly",
+                PatternKind.ALPHABET,
+                "  alphabet butterfly      — mirrored A… blocks (2n rows)",
+                (n, in, out, err) -> {
+                    LetterShapes.letterButterfly(out, n);
+                    return true;
+                },
+                Arrays.asList(
+                        "alphabet butterfly",
+                        "letter butterfly")));
 
         Map<String, PatternDefinition> index = new HashMap<>();
         for (PatternDefinition def : defs) {

@@ -10,7 +10,7 @@ import java.util.Optional;
 import java.util.Scanner;
 
 /**
- * Interactive CLI: choose star vs number, then pattern name and size; dispatches via {@link PatternCatalog}.
+ * Interactive CLI: choose star, number, or alphabet; then pattern name and size.
  */
 public final class PatternConsoleApp {
 
@@ -27,7 +27,7 @@ public final class PatternConsoleApp {
     }
 
     public void run() {
-        out.println("Pattern printer — choose star (*) or number patterns, then a name and size.\n");
+        out.println("Pattern printer — choose star (*), numbers, or alphabet (A–Z), then a name and size.\n");
 
         boolean continueSession = true;
         while (continueSession) {
@@ -39,9 +39,12 @@ public final class PatternConsoleApp {
             String rawName = in.nextLine();
             String key = Normalization.patternKey(rawName);
 
-            String sizePrompt = kind == PatternKind.STAR
-                    ? "Enter size / rows (height for hollow rectangle): "
-                    : "Enter size / rows (or n for n×n grids): ";
+            String sizePrompt;
+            if (kind == PatternKind.STAR) {
+                sizePrompt = "Enter size / rows (height for hollow rectangle): ";
+            } else {
+                sizePrompt = "Enter size / rows (or n for n×n grids): ";
+            }
             out.print(sizePrompt);
             String rawRows = in.nextLine();
             int n;
@@ -82,7 +85,8 @@ public final class PatternConsoleApp {
             out.println("Which kind of pattern do you want?");
             out.println("  1 — Star (*) patterns");
             out.println("  2 — Number patterns");
-            out.print("Enter 1 or 2 (or star / number): ");
+            out.println("  3 — Alphabet (letter) patterns");
+            out.print("Enter 1, 2, or 3 (or star / number / alphabet): ");
             String raw = Normalization.patternKey(in.nextLine());
             if (raw.equals("1") || raw.equals("star") || raw.equals("*")) {
                 return PatternKind.STAR;
@@ -90,7 +94,11 @@ public final class PatternConsoleApp {
             if (raw.equals("2") || raw.equals("number") || raw.equals("num") || raw.equals("numeric")) {
                 return PatternKind.NUMBER;
             }
-            err.println("Please enter 1 or 2, or type star / number.");
+            if (raw.equals("3") || raw.equals("alphabet") || raw.equals("letter") || raw.equals("letters")
+                    || raw.equals("abc") || raw.equals("character") || raw.equals("characters")) {
+                return PatternKind.ALPHABET;
+            }
+            err.println("Please enter 1, 2, or 3 — or type star, number, or alphabet.");
         }
     }
 
@@ -98,8 +106,10 @@ public final class PatternConsoleApp {
         out.println();
         if (kind == PatternKind.STAR) {
             out.println("Star (*) patterns — names you can enter (case-insensitive):");
-        } else {
+        } else if (kind == PatternKind.NUMBER) {
             out.println("Number patterns — names you can enter (case-insensitive):");
+        } else {
+            out.println("Alphabet patterns — names you can enter (case-insensitive):");
         }
         for (PatternDefinition def : catalog.definitionsForKind(kind)) {
             if (def.sectionTitle() != null) {
@@ -112,7 +122,16 @@ public final class PatternConsoleApp {
     }
 
     private static String labelForKind(PatternKind kind) {
-        return kind == PatternKind.STAR ? "star (*)" : "number";
+        switch (kind) {
+            case STAR:
+                return "star (*)";
+            case NUMBER:
+                return "number";
+            case ALPHABET:
+                return "alphabet";
+            default:
+                return kind.name().toLowerCase();
+        }
     }
 
     private boolean askContinue() {

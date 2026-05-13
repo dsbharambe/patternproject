@@ -1,11 +1,11 @@
 # Pattern Project
 
-A small Java console application that prints **star (`*`)** and **numeric** patterns from a named catalog. Rendering is separate from the interactive CLI; names and aliases are registered in `PatternCatalog`.
+A small Java console application that prints **star (`*`)**, **numeric**, and **alphabet (A–Z)** patterns from a named catalog. Rendering is separate from the interactive CLI; names and aliases are registered in `PatternCatalog`.
 
 ## Features
 
 - **Interactive session** — enter a pattern name and size; after each result, choose whether to try another pattern.
-- **Star and number shapes** — triangles, pyramids, diamonds, Pascal / Sierpinski stars, Floyd’s triangle, multiplication table, snake fill, and more.
+- **Star, number, and alphabet shapes** — triangles, pyramids, diamonds, Pascal stars, Floyd’s triangle, letter butterflies, and more.
 - **Test-friendly rendering** — shape code writes to a `PrintStream` (typically `System.out`), not hard-coded global output.
 - **Single registry** — aliases and help text live alongside each pattern in `PatternCatalog`.
 
@@ -40,7 +40,7 @@ The class `StarPatternDemo` still exposes a `main` method and delegates to `Patt
 ## Usage
 
 1. Start the app; it explains the flow.
-2. Choose **kind**: `1` / `star` / `*` for star patterns, or `2` / `number` for number patterns.
+2. Choose **kind**: `1` / `star` / `*` — stars; `2` / `number` — numbers; `3` / `alphabet` / `letter` — A–Z patterns.
 3. Read the **filtered list** for that kind only.
 4. Enter a **pattern name** (e.g. `butterfly`, `floyd triangle`).
 5. Enter **size / rows** (for `hollow rectangle` under stars, this is **height**; width is prompted next).
@@ -96,17 +96,34 @@ The class `StarPatternDemo` still exposes a `main` method and delegates to `Patt
 | Centered increasing | `centered increasing numbers`, `centered increasing` |
 | Hollow pyramid (numbers) | `hollow pyramid numbers`, `hollow number pyramid` |
 
+### Alphabet patterns
+
+| Concept | Example names |
+|--------|----------------|
+| Simple alphabet triangle | `simple alphabet triangle`, `alphabet triangle simple` |
+| Repeated alphabet triangle | `repeated alphabet triangle` |
+| Reverse alphabet triangle | `reverse alphabet triangle` |
+| Left / right-aligned triangle | `left alphabet triangle`, `letter triangle left` |
+| Alphabet pyramid | `alphabet pyramid`, `letter pyramid` |
+| Palindrome pyramid | `palindrome alphabet pyramid`, `palindrome letter pyramid` |
+| Diamond | `diamond alphabet`, `diamond alphabet pattern` |
+| Descending pyramid | `descending alphabet pyramid`, `descending letter pyramid` |
+| Hollow pyramid | `hollow alphabet pyramid`, `hollow letter pyramid` |
+| Sequential letter square | `sequential letter square`, `sequential alphabet square`, `alphabet square` |
+| Hourglass | `alphabet hourglass`, `letter hourglass`, `alphabet sandglass` |
+| Butterfly | `alphabet butterfly`, `letter butterfly` |
+
 ## Architecture
 
 | Package | Responsibility |
 |---------|----------------|
 | `com.patternproject` | Application entry: `PatternApplication` wires dependencies. |
 | `com.patternproject.cli` | `PatternConsoleApp` — prompts, validation loop, help output. |
-| `com.patternproject.catalog` | `PatternCatalog`, `PatternDefinition`, `PatternDrawer` — name → behavior. |
-| `com.patternproject.rendering` | `StarShapes`, `NumberShapes` — pure drawing to a `PrintStream`. |
+| `com.patternproject.catalog` | `PatternCatalog`, `PatternDefinition`, `PatternDrawer`, `PatternKind` — name → behavior. |
+| `com.patternproject.rendering` | `StarShapes`, `NumberShapes`, `LetterShapes` — drawing to a `PrintStream`. |
 | `com.patternproject.util` | `Normalization`, `Strings` — input normalization and Java 8–safe string repeat. |
 
-**Flow:** `PatternApplication` builds a `PatternCatalog.standard()`, then runs `PatternConsoleApp`. The console resolves the normalized name, invokes the matching `PatternDrawer`, which calls `StarShapes` or `NumberShapes` with `System.out` / `System.err` as appropriate.
+**Flow:** `PatternApplication` builds a `PatternCatalog.standard()`, then runs `PatternConsoleApp`. The console resolves the normalized name, invokes the matching `PatternDrawer`, which calls `StarShapes`, `NumberShapes`, or `LetterShapes` as appropriate.
 
 ## Project layout
 
@@ -119,8 +136,10 @@ src/main/java/com/patternproject/
     PatternCatalog.java
     PatternDefinition.java
     PatternDrawer.java
+    PatternKind.java
   rendering/StarShapes.java
   rendering/NumberShapes.java
+  rendering/LetterShapes.java
   util/Normalization.java
   util/Strings.java
 ```

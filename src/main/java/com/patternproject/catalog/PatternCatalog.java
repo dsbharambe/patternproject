@@ -225,6 +225,7 @@ public final class PatternCatalog {
         defs.add(new PatternDefinition(
                 "simple_number_triangle",
                 "Number patterns:",
+                PatternKind.NUMBER,
                 "  simple number triangle   — rows 1, 12…, …, 1…n",
                 (n, in, out, err) -> {
                     NumberShapes.simpleNumberTriangle(out, n);
@@ -236,6 +237,7 @@ public final class PatternCatalog {
 
         defs.add(new PatternDefinition(
                 "repeated_number_triangle",
+                PatternKind.NUMBER,
                 "  repeated number triangle — row i is i repeated i times",
                 (n, in, out, err) -> {
                     NumberShapes.repeatedNumberTriangle(out, n);
@@ -245,6 +247,7 @@ public final class PatternCatalog {
 
         defs.add(new PatternDefinition(
                 "reverse_number_triangle",
+                PatternKind.NUMBER,
                 "  reverse number triangle — row i : i … 1",
                 (n, in, out, err) -> {
                     NumberShapes.reverseNumberTriangle(out, n);
@@ -254,6 +257,7 @@ public final class PatternCatalog {
 
         defs.add(new PatternDefinition(
                 "floyds_triangle",
+                PatternKind.NUMBER,
                 "  floyd triangle         — Floyd’s consecutive fill",
                 (n, in, out, err) -> {
                     NumberShapes.floydsTriangle(out, n);
@@ -263,6 +267,7 @@ public final class PatternCatalog {
 
         defs.add(new PatternDefinition(
                 "zero_one_triangle",
+                PatternKind.NUMBER,
                 "  0-1 triangle           — alternating 0/1 per cell",
                 (n, in, out, err) -> {
                     NumberShapes.zeroOneTriangle(out, n);
@@ -275,6 +280,7 @@ public final class PatternCatalog {
 
         defs.add(new PatternDefinition(
                 "number_pyramid",
+                PatternKind.NUMBER,
                 "  number pyramid         — centered 1…i rows",
                 (n, in, out, err) -> {
                     NumberShapes.numberPyramid(out, n);
@@ -284,6 +290,7 @@ public final class PatternCatalog {
 
         defs.add(new PatternDefinition(
                 "palindrome_number_pyramid",
+                PatternKind.NUMBER,
                 "  palindrome number pyramid — 1 2 … i … 2 1",
                 (n, in, out, err) -> {
                     NumberShapes.palindromeNumberPyramid(out, n);
@@ -293,6 +300,7 @@ public final class PatternCatalog {
 
         defs.add(new PatternDefinition(
                 "diamond_number",
+                PatternKind.NUMBER,
                 "  diamond number          — numeric palindrome diamond",
                 (n, in, out, err) -> {
                     NumberShapes.diamondNumberPattern(out, n);
@@ -302,6 +310,7 @@ public final class PatternCatalog {
 
         defs.add(new PatternDefinition(
                 "sequential_number_square",
+                PatternKind.NUMBER,
                 "  sequential number square — n×n grid 1…n²",
                 (n, in, out, err) -> {
                     NumberShapes.sequentialNumberSquare(out, n);
@@ -311,6 +320,7 @@ public final class PatternCatalog {
 
         defs.add(new PatternDefinition(
                 "reverse_sequential_triangle",
+                PatternKind.NUMBER,
                 "  reverse sequential triangle — n…1 then … packed rows",
                 (n, in, out, err) -> {
                     NumberShapes.reverseSequentialTriangle(out, n);
@@ -320,6 +330,7 @@ public final class PatternCatalog {
 
         defs.add(new PatternDefinition(
                 "pascal_triangle",
+                PatternKind.NUMBER,
                 "  pascal triangle        — binomial coefficients",
                 (n, in, out, err) -> {
                     NumberShapes.pascalTriangle(out, n);
@@ -329,6 +340,7 @@ public final class PatternCatalog {
 
         defs.add(new PatternDefinition(
                 "right_pascal",
+                PatternKind.NUMBER,
                 "  right pascal           — Pascal rows right-aligned",
                 (n, in, out, err) -> {
                     NumberShapes.rightPascalPattern(out, n);
@@ -340,6 +352,7 @@ public final class PatternCatalog {
 
         defs.add(new PatternDefinition(
                 "alternating_binary_pattern",
+                PatternKind.NUMBER,
                 "  alternating binary pattern — n×n 0/1 checker",
                 (n, in, out, err) -> {
                     NumberShapes.alternatingBinaryPattern(out, n);
@@ -349,6 +362,7 @@ public final class PatternCatalog {
 
         defs.add(new PatternDefinition(
                 "descending_number_pyramid",
+                PatternKind.NUMBER,
                 "  descending number pyramid — upside-down widening rows",
                 (n, in, out, err) -> {
                     NumberShapes.descendingNumberPyramid(out, n);
@@ -358,6 +372,7 @@ public final class PatternCatalog {
 
         defs.add(new PatternDefinition(
                 "hollow_number_square",
+                PatternKind.NUMBER,
                 "  hollow number square   — border 1, interior 0",
                 (n, in, out, err) -> {
                     NumberShapes.hollowNumberSquare(out, n);
@@ -367,6 +382,7 @@ public final class PatternCatalog {
 
         defs.add(new PatternDefinition(
                 "number_hourglass",
+                PatternKind.NUMBER,
                 "  number hourglass     — widen then narrow, consecutive ints",
                 (n, in, out, err) -> {
                     NumberShapes.numberHourglass(out, n);
@@ -376,6 +392,7 @@ public final class PatternCatalog {
 
         defs.add(new PatternDefinition(
                 "multiplication_table",
+                PatternKind.NUMBER,
                 "  multiplication table — i×j for 1…n",
                 (n, in, out, err) -> {
                     NumberShapes.multiplicationTablePattern(out, n);
@@ -385,6 +402,7 @@ public final class PatternCatalog {
 
         defs.add(new PatternDefinition(
                 "snake_number_pattern",
+                PatternKind.NUMBER,
                 "  snake number pattern — row-major zig-zag rows",
                 (n, in, out, err) -> {
                     NumberShapes.snakeNumberPattern(out, n);
@@ -394,6 +412,7 @@ public final class PatternCatalog {
 
         defs.add(new PatternDefinition(
                 "centered_increasing_numbers",
+                PatternKind.NUMBER,
                 "  centered increasing numbers — centered 1…i rows",
                 (n, in, out, err) -> {
                     NumberShapes.centeredIncreasingNumbers(out, n);
@@ -403,6 +422,7 @@ public final class PatternCatalog {
 
         defs.add(new PatternDefinition(
                 "hollow_pyramid_numbers",
+                PatternKind.NUMBER,
                 "  hollow pyramid numbers — outline only",
                 (n, in, out, err) -> {
                     NumberShapes.hollowPyramidNumbers(out, n);
@@ -419,6 +439,16 @@ public final class PatternCatalog {
             }
         }
         return new PatternCatalog(defs, index);
+    }
+
+    public List<PatternDefinition> definitionsForKind(PatternKind kind) {
+        List<PatternDefinition> list = new ArrayList<PatternDefinition>();
+        for (PatternDefinition def : ordered) {
+            if (def.kind() == kind) {
+                list.add(def);
+            }
+        }
+        return Collections.unmodifiableList(list);
     }
 
     public Optional<PatternDefinition> find(String normalizedKey) {

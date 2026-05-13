@@ -39,10 +39,12 @@ The class `StarPatternDemo` still exposes a `main` method and delegates to `Patt
 
 ## Usage
 
-1. Start the app; it prints a list of supported pattern names (case-insensitive).
-2. Enter a **pattern name** (e.g. `pyramid`, `butterfly`, `hollow rectangle`).
-3. Enter **size / rows** (for `hollow rectangle`, this is **height**; you will be prompted for **width** next).
-4. When asked *Do you want any other pattern?*, answer `yes` / `y` or `no` / `n`.
+1. Start the app; it explains the flow.
+2. Choose **kind**: `1` / `star` / `*` for star patterns, or `2` / `number` for number patterns.
+3. Read the **filtered list** for that kind only.
+4. Enter a **pattern name** (e.g. `butterfly`, `floyd triangle`).
+5. Enter **size / rows** (for `hollow rectangle` under stars, this is **height**; width is prompted next).
+6. When asked *Do you want any other pattern?*, answer `yes` / `y` or `no` / `n` — you will choose the kind again for the next pattern.
 
 ## Supported patterns (names are aliases)
 
